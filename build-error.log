@@ -1,0 +1,21 @@
+﻿
+> mipaginaweb@0.1.0 build
+> next build
+
+   Ôû▓ Next.js 15.5.20
+
+   Creating an optimized production build ...
+npm : uncaughtException [Error: EPERM: operation not permitted, open 
+'C:\GARIMA\REACT\mipaginaweb\.next\trace'] {
+En línea: 1 Carácter: 35
++ cd 'c:\GARIMA\REACT\mipaginaweb'; npm run build 2>&1 | Out-File build ...
++                                   ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (uncaughtExcepti....next\trace'] { 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'open',
+  path: 'C:\\GARIMA\\REACT\\mipaginaweb\\.next\\trace'
+}

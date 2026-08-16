@@ -1,0 +1,13 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/contacto/route": "app/api/contacto/route.js",
+  "/api/experiencia/route": "app/api/experiencia/route.js",
+  "/api/formacion/route": "app/api/formacion/route.js",
+  "/api/inicio/route": "app/api/inicio/route.js",
+  "/api/proyectos/route": "app/api/proyectos/route.js",
+  "/api/sobremi/route": "app/api/sobremi/route.js",
+  "/page": "app/page.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js"
+}

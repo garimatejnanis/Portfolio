@@ -1,0 +1,13 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/contacto/route": "/api/contacto",
+  "/api/experiencia/route": "/api/experiencia",
+  "/api/formacion/route": "/api/formacion",
+  "/api/inicio/route": "/api/inicio",
+  "/api/proyectos/route": "/api/proyectos",
+  "/api/sobremi/route": "/api/sobremi",
+  "/page": "/",
+  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml"
+}

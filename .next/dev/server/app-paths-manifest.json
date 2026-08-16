@@ -1,0 +1,8 @@
+{
+  "/api/contacto/route": "app/api/contacto/route.js",
+  "/api/experiencia/route": "app/api/experiencia/route.js",
+  "/api/formacion/route": "app/api/formacion/route.js",
+  "/api/inicio/route": "app/api/inicio/route.js",
+  "/api/proyectos/route": "app/api/proyectos/route.js",
+  "/api/sobremi/route": "app/api/sobremi/route.js"
+}
