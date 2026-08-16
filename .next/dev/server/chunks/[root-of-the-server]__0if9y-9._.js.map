@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 52, "column": 0}, "map": {"version":3,"sources":["file:///C:/GARIMA/REACT/mipaginaweb/app/api/inicio/route.js"],"sourcesContent":["export async function GET(request) {\r\n  const secret = request.headers.get(\"x-api-secret\");\r\n\r\n  if (secret !== process.env.API_SECRET) {\r\n    return new Response(\"No autorizado\", { status: 401 });\r\n  }\r\n\r\n  const data = {\r\n    titulo: \"Garima Tejnani - Desarrolladora Web\",\r\n    descripcion:\r\n      \"Creo aplicaciones modernas, rápidas y escalables con enfoque en experiencia de usuario.\"\r\n  };\r\n\r\n  return Response.json(data);\r\n}"],"names":["GET","request","secret","headers","get","process","env","API_SECRET","Response","status","data","titulo","descripcion","json"],"mappings":";;;;AAAO,eAAeA,IAAIC,OAAO;IAC/B,MAAMC,SAASD,QAAQE,OAAO,CAACC,GAAG,CAAC;IAEnC,IAAIF,WAAWG,QAAQC,GAAG,CAACC,UAAU,EAAE;QACrC,OAAO,IAAIC,SAAS,iBAAiB;YAAEC,QAAQ;QAAI;IACrD;IAEA,MAAMC,OAAO;QACXC,QAAQ;QACRC,aACE;IACJ;IAEA,OAAOJ,SAASK,IAAI,CAACH;AACvB"}}]
-}
