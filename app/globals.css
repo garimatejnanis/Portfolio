@@ -751,10 +751,6 @@ p {
   gap: 20px;
 }
 
-p{
-  text-align: justify;
-}
-
  .menu-responsive .lang-toggle-btn {
   margin-left: 25px !important;
   margin-right: auto !important;
