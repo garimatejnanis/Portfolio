@@ -9,10 +9,9 @@ async function getInicio() {
     headers: { "x-api-secret": process.env.API_SECRET! },
     next: { revalidate: 3600 },
   });
-  const text = await res.text();
-  console.log("DEBUG INICIO:", res.status, text.slice(0, 300)); // línea temporal
-  return JSON.parse(text);
+  return res.json();
 }
+
 //Creamos funcion asincrona para obtener los datos del inicio y renderizarlos en la seccion de inicio
 
 export default async function InicioSection() {

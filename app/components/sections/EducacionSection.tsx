@@ -9,9 +9,7 @@ async function getFormacion() {
     headers: { "x-api-secret": process.env.API_SECRET! },
     next: { revalidate: 3600 },
   });
-  const text = await res.text();
-  console.log("DEBUG EDUCACION:", res.status, text.slice(0, 200));
-  return JSON.parse(text);
+  return res.json();
 }
 
 //Creamos funcion asincrona para obtener los datos de formacion y renderizarlos en la seccion de formacion
