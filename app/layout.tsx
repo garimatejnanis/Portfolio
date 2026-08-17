@@ -84,7 +84,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', 'G-RCK8F0E9YR');
           `}
         </Script>
+
+        {/* ⭐ Google Search Console */}
+        <meta
+          name="google-site-verification"
+          content="p2p0Rrl2tbZc3cDGd1gJo6d5anWn-GxQcIxDjPFMK-E"
+        />
       </head>
+
 
       <body>
         <div id="cursor-blur"></div>
