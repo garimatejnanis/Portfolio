@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 
 import "./bootstrap/css/bootstrap.min.css";
 import "./globals.css";
@@ -25,7 +26,6 @@ export const metadata: Metadata = {
     canonical: "/",
   },
 
-  // Cómo se ve el link al compartirlo (WhatsApp, LinkedIn, etc.)
   openGraph: {
     type: "website",
     locale: "es_ES",
@@ -36,14 +36,13 @@ export const metadata: Metadata = {
     siteName: "Garima Tejnani",
     images: [
       {
-        url: "/og-image.jpg", // ⚠️ 1200x630px
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Garima Tejnani – Desarrolladora Web",
       },
     ],
   },
-
 };
 
 export const viewport: Viewport = {
@@ -51,7 +50,7 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-// Datos estructurados: ayuda a Google a entender quién eres (persona/profesión)
+// Datos estructurados
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -59,7 +58,7 @@ const jsonLd = {
   jobTitle: "Desarrolladora Web",
   description:
     "Desarrolladora web especializada en PHP, MySQL, WordPress y JavaScript.",
-  url: "https://TU-DOMINIO-FINAL.com", 
+  url: "https://TU-DOMINIO-FINAL.com",
   sameAs: [
     "https://es.linkedin.com/in/garima-ts-6b8252248",
     "https://github.com/garimatejnanis/",
@@ -67,13 +66,26 @@ const jsonLd = {
   knowsAbout: ["PHP", "MySQL", "WordPress", "JavaScript", "React", "Next.js"],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
+      <head>
+        {/* ⭐ Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-RCK8F0E9YR"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-RCK8F0E9YR');
+          `}
+        </Script>
+      </head>
+
       <body>
         <div id="cursor-blur"></div>
 
@@ -89,7 +101,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
 
-        {/* Scripts que solo deben ejecutarse en el cliente */}
         <ClientScripts />
       </body>
     </html>
