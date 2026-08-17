@@ -20,12 +20,19 @@ export default function FormacionSection() {
     }
 
     fetchFormacion();
-  }, []); // ← evita bucles infinitos
-
-  useEffect(() => {
-    const lines = document.querySelectorAll(".decoracionLinea");
-    lines.forEach((line) => line.classList.add("visible"));
   }, []);
+
+  // 👉 ESTE useEffect debe ejecutarse SOLO cuando data ya existe
+  useEffect(() => {
+    if (!data) return;
+
+    const timer = setTimeout(() => {
+      const lines = document.querySelectorAll(".decoracionLinea");
+      lines.forEach((line) => line.classList.add("visible"));
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [data]); // ← IMPORTANTE: depende de data
 
   if (!data) return null;
 
