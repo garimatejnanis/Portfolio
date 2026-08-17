@@ -751,15 +751,9 @@ p {
   gap: 20px;
 }
 
-
- /* .idiomas-grid {
-    display: flex !important;
-  }
-
-  .contact-grid{
-    display: flex !important;
-    flex-direction: column !important;
-  }*/
+p{
+  text-align: justify;
+}
 
  .menu-responsive .lang-toggle-btn {
   margin-left: 25px !important;
