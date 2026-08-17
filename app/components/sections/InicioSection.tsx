@@ -1,23 +1,26 @@
 "use client";
 
-//Importamos el componente Link de Next.js para navegación entre páginas y secciones
-
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
-//Obtiene los datos del inicio desde la API y los devuelve como un objeto JSON
+export default function InicioSection() {
+  const [data, setData] = useState({ titulo: "", descripcion: "" });
 
-async function getInicio() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/inicio`, {
-    headers: { "x-api-secret": process.env.API_SECRET! },
-    next: { revalidate: 3600 },
-  });
-  return res.json();
-}
+  useEffect(() => {
+    async function fetchInicio() {
+      try {
+        const res = await fetch("/api/inicio");
+        if (!res.ok) return;
 
-//Creamos funcion asincrona para obtener los datos del inicio y renderizarlos en la seccion de inicio
+        const json = await res.json();
+        setData(json);
+      } catch (err) {
+        console.error("Error cargando inicio:", err);
+      }
+    }
 
-export default async function InicioSection() {
-  const data = await getInicio();
+    fetchInicio();
+  }, []); // ← IMPORTANTE: evita bucles infinitos
 
   return (
     <section id="inicio" className="home-section pt-2 pb-5">
@@ -26,9 +29,15 @@ export default async function InicioSection() {
           <h1>{data.titulo}</h1>
           <p className="primerTexto">{data.descripcion}</p>
 
-          <Link className="btn btn-primary me-3" href="/CV-ES_Garima_Tejnani_Sukhnani.pdf" target="_blank" download>
+          <Link
+            className="btn btn-primary me-3"
+            href="/CV-ES_Garima_Tejnani_Sukhnani.pdf"
+            target="_blank"
+            download
+          >
             Descargar CV
           </Link>
+
           <Link className="btn btn-primary" href="#contacto">
             Contáctame
           </Link>
