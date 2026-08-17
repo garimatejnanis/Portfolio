@@ -1,9 +1,8 @@
 export async function GET(request) {
-  
   const secret = request.headers.get("x-api-secret");
 
   if (secret !== process.env.API_SECRET) {
-    return new Response("No autorizado", { status: 401 });
+    return Response.json({ error: "No autorizado" }, { status: 401 });
   }
 
   const data = [

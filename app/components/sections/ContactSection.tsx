@@ -10,18 +10,24 @@ async function getContacto() {
       ? `https://${process.env.VERCEL_URL}`
       : process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
-  const res = await fetch(`${baseUrl}/api/contacto`, {
-    headers: { "x-api-secret": process.env.API_SECRET! },
-    next: { revalidate: 3600 },
-  });
+  try {
+    const res = await fetch(`${baseUrl}/api/contacto`, {
+      headers: { "x-api-secret": process.env.API_SECRET! },
+      next: { revalidate: 3600 },
+    });
 
-  if (!res.ok) {
-    console.error("API contacto error:", await res.text());
+    if (!res.ok) {
+      console.error("API contacto error:", await res.text());
+      return [];
+    }
+
+    return await res.json();
+  } catch (err) {
+    console.error("Error general:", err);
     return [];
   }
-
-  return res.json();
 }
+
 
 
 
