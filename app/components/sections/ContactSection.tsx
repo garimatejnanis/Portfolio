@@ -5,32 +5,12 @@ import Image from "next/image";
 //Obtiene los datos de contacto desde la API y los devuelve como un objeto JSON
 
 async function getContacto() {
-  const baseUrl =
-    process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-
-  try {
-    const res = await fetch(`${baseUrl}/api/contacto`, {
-      headers: { "x-api-secret": process.env.API_SECRET! },
-      next: { revalidate: 3600 },
-    });
-
-    if (!res.ok) {
-      console.error("API contacto error:", await res.text());
-      return [];
-    }
-
-    return await res.json();
-  } catch (err) {
-    console.error("Error general:", err);
-    return [];
-  }
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/contacto`, {
+    headers: { "x-api-secret": process.env.API_SECRET! },
+    next: { revalidate: 3600 },
+  });
+  return res.json();
 }
-
-
-
-
 
 //Creamos funcion asincrona para obtener los datos de contacto y renderizarlos en la seccion de contacto
 

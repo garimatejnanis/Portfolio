@@ -1,3 +1,5 @@
+"use client";
+
 //Importamos el componente Link de Next.js para navegación entre páginas y secciones
 
 import Link from "next/link";
