@@ -1,9 +1,4 @@
-export async function GET(request) {
-  const secret = request.headers.get("x-api-secret");
-
-  if (secret !== process.env.API_SECRET) {
-    return new Response("No autorizado", { status: 401 });
-  }
+export async function GET() {
   const data = [
     {
       year: "Septiembre 2025 – Actualidad",
@@ -43,13 +38,13 @@ export async function GET(request) {
       descripcionPrincipal:
         "Desarrollo de soluciones web para clientes, participando en el diseño, desarrollo, mantenimiento y optimización de sitios web adaptados a las necesidades de cada proyecto.",
       tareasPrincipal: [
-        "CDesarrollo y personalización de un sitio web para una agencia inmobiliaria con WordPress, HTML, CSS, JavaScript y PHP.",
+        "Desarrollo y personalización de un sitio web para una agencia inmobiliaria con WordPress, HTML, CSS, JavaScript y PHP.",
         "Diseño, mantenimiento y actualización de la página web de un negocio local, implementando mejoras funcionales y visuales.",
         "Gestión y optimización del contenido web para mejorar el rendimiento, la experiencia de usuario y el posicionamiento SEO.",
         "Administración y actualización periódica del sitio web, garantizando su correcto funcionamiento.",
         "Gestión de redes sociales (Instagram y Facebook), coordinando la publicación de contenido y la presencia digital del negocio.",
         "Uso de herramientas de Inteligencia Artificial para el desarrollo y revisión de código, detectando errores y aplicando mejoras."
-      ],
+      ]
     },
 
     {
@@ -64,7 +59,7 @@ export async function GET(request) {
         "Instalación, configuración y administración de entornos WordPress, incluyendo hosting, usuarios y copias de seguridad.",
         "Optimización del rendimiento, seguridad y SEO técnico para mejorar la experiencia de usuario y el posicionamiento web.",
         "Colaboración con el equipo en el mantenimiento y mejora continua de proyectos web."
-      ],
+      ]
     }
   ];
 

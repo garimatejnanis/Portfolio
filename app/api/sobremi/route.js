@@ -1,10 +1,4 @@
-export async function GET(request) {
-  const secret = request.headers.get("x-api-secret");
-
-  if (secret !== process.env.API_SECRET) {
-    return new Response("No autorizado", { status: 401 });
-  }
-
+export async function GET() {
   const data = {
     sobreMi: {
       titulo: "Sobre mí",
@@ -17,7 +11,7 @@ export async function GET(request) {
     skills: {
       frontEnd: [
         { name: "HTML5", icon: "/html-logo.svg", alt: "HTML5" },
-        { name: "CSS3", icon: "/css-logo.svg" , alt: "CSS3"},
+        { name: "CSS3", icon: "/css-logo.svg", alt: "CSS3" },
         { name: "JavaScript", icon: "/javascript-logo.svg", alt: "JavaScript" },
         { name: "Bootstrap", icon: "/bootstrap-logo.svg", alt: "Bootstrap" },
         { name: "React", icon: "/react-logo.svg", alt: "React" }

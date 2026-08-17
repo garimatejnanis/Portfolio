@@ -1,10 +1,4 @@
-export async function GET(request) {
-  const secret = request.headers.get("x-api-secret");
-
-  if (secret !== process.env.API_SECRET) {
-    return new Response("No autorizado", { status: 401 });
-  }
-  
+export async function GET() {
   const data = {
     educacion: [
       {

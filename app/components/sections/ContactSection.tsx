@@ -1,23 +1,26 @@
 "use client";
 
-//Importamos el componente Image de Next.js para optimizar las imágenes
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
-import Image from "next/image"; 
+export default function ContactSection() {
+  const [contacto, setContacto] = useState([]);
 
-//Obtiene los datos de contacto desde la API y los devuelve como un objeto JSON
+  useEffect(() => {
+    async function fetchContacto() {
+      try {
+        const res = await fetch("/api/contacto");
+        if (!res.ok) return;
 
-async function getContacto() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/contacto`, {
-    headers: { "x-api-secret": process.env.API_SECRET! },
-    next: { revalidate: 3600 },
-  });
-  return res.json();
-}
+        const data = await res.json();
+        setContacto(data);
+      } catch (err) {
+        console.error("Error cargando contacto:", err);
+      }
+    }
 
-//Creamos funcion asincrona para obtener los datos de contacto y renderizarlos en la seccion de contacto
-
-export default async function ContactSection() {
-  const contacto = await getContacto();
+    fetchContacto();
+  }, []); // ← evita bucles infinitos
 
   return (
     <section id="contacto" className="home-section">
@@ -31,11 +34,14 @@ export default async function ContactSection() {
       <div className="row justify-content-center pb-5">
         <div className="col-12 col-md-10 col-lg-8 col-xl-7">
           <div className="contact-grid">
-
-            {/*Renderiza un enlace por cada contacto que venga de la API */}
-            
-            {contacto.map((item: any, index: number) => (
-              <a key={index} href={item.href} target="_blank" rel="noreferrer" className="contact-card">
+            {contacto.map((item, index) => (
+              <a
+                key={index}
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                className="contact-card"
+              >
                 <Image src={item.image} alt={item.alt} width={40} height={40} />
                 <span>{item.nombre}</span>
               </a>

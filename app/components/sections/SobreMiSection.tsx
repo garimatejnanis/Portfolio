@@ -1,20 +1,7 @@
 "use client";
 
-//Importamos el componente Image de Next.js para optimizar las imágenes
-
+import { useEffect, useState } from "react";
 import Image from "next/image";
-
-//Obtiene los datos de contacto desde la API y los devuelve como un objeto JSON
-
-async function getSobreMi() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/sobremi`, {
-    headers: { "x-api-secret": process.env.API_SECRET! },
-    next: { revalidate: 3600 },
-  });
-  return res.json();
-}
-
-//Creamos un componente SkillGroup para renderizar cada grupo de skills
 
 function SkillGroup({ title, titleClassName, gridClassName, skills, cardClassName }) {
   return (
@@ -24,7 +11,14 @@ function SkillGroup({ title, titleClassName, gridClassName, skills, cardClassNam
         <div className={gridClassName}>
           {skills.map((skill) => (
             <span key={skill.name}>
-              <Image src={skill.icon} alt={skill.name} width={18} height={18} style={{ marginRight: "6px" }} loading="lazy"/>
+              <Image
+                src={skill.icon}
+                alt={skill.name}
+                width={18}
+                height={18}
+                style={{ marginRight: "6px" }}
+                loading="lazy"
+              />
               {skill.name}
             </span>
           ))}
@@ -34,11 +28,27 @@ function SkillGroup({ title, titleClassName, gridClassName, skills, cardClassNam
   );
 }
 
-//Creamos funcion asincrona para obtener los datos de sobre mi y renderizarlos en la seccion de sobre mi
+export default function SobreMiSection() {
+  const [data, setData] = useState(null);
 
-export default async function SobreMiSection() {
+  useEffect(() => {
+    async function fetchSobreMi() {
+      try {
+        const res = await fetch("/api/sobremi");
+        if (!res.ok) return;
 
-  const data = await getSobreMi();
+        const json = await res.json();
+        setData(json);
+      } catch (err) {
+        console.error("Error cargando sobre mí:", err);
+      }
+    }
+
+    fetchSobreMi();
+  }, []);
+
+  if (!data) return null;
+
   const { sobreMi, skills } = data;
 
   return (
@@ -56,17 +66,37 @@ export default async function SobreMiSection() {
       </div>
 
       <div className="row justify-content-center g-3 px-3 pb-4">
+        <SkillGroup
+          title="Front-End"
+          titleClassName="tituloFE"
+          gridClassName="textoFE"
+          skills={skills.frontEnd}
+          cardClassName="cajaCuerpoFE"
+        />
 
-      {/* Renderiza un grupo de skills por cada categoria que venga de la API */}
+        <SkillGroup
+          title="Back-End"
+          titleClassName="tituloBE"
+          gridClassName="textoBE"
+          skills={skills.backEnd}
+          cardClassName="cajaCuerpoBE"
+        />
 
-        <SkillGroup title="Front-End" titleClassName="tituloFE" gridClassName="textoFE" skills={skills.frontEnd} cardClassName="cajaCuerpoFE"/>
+        <SkillGroup
+          title="CMS"
+          titleClassName="tituloTP"
+          gridClassName="textoTP"
+          skills={skills.cms}
+          cardClassName="cajaCuerpoTP"
+        />
 
-        <SkillGroup title="Back-End" titleClassName="tituloBE" gridClassName="textoBE" skills={skills.backEnd} cardClassName="cajaCuerpoBE"/>
-
-        <SkillGroup title="CMS" titleClassName="tituloTP" gridClassName="textoTP" skills={skills.cms} cardClassName="cajaCuerpoTP"/>
-
-        <SkillGroup title="Herramientas" titleClassName="tituloTH" gridClassName="textoTH" skills={skills.tools} cardClassName="cajaCuerpoTH"/>
-
+        <SkillGroup
+          title="Herramientas"
+          titleClassName="tituloTH"
+          gridClassName="textoTH"
+          skills={skills.tools}
+          cardClassName="cajaCuerpoTH"
+        />
       </div>
     </section>
   );

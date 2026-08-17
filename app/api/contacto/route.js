@@ -1,10 +1,4 @@
-export async function GET(request) {
-  const secret = request.headers.get("x-api-secret");
-
-  if (secret !== process.env.API_SECRET) {
-    return Response.json({ error: "No autorizado" }, { status: 401 });
-  }
-
+export async function GET() {
   const data = [
     {
       nombre: "LinkedIn",
@@ -14,7 +8,7 @@ export async function GET(request) {
     },
     {
       nombre: "Email",
-      href: "https://mail.google.com/mail/?view=cm&fs=1&to=garimatejnani@gmail.com",
+      href: "mailto:garimatejnani@gmail.com",
       image: "/gmail-logo.svg",
       alt: "Email"
     },

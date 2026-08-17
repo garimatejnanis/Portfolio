@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://garimatejnanis.vercel.app"; // ⚠️ actualiza al publicar
+  const baseUrl = "localhost:3000"; // ⚠️ actualiza al publicar
 
   return {
     rules: {

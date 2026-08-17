@@ -1,19 +1,25 @@
 "use client";
 
-//Obtiene los datos de contacto desde la API y los devuelve como un objeto JSON
+import { useEffect, useState } from "react";
 
-async function getExperiencia() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/experiencia`, {
-    headers: { "x-api-secret": process.env.API_SECRET! },
-    next: { revalidate: 3600 },
-  });
-  return res.json();
-}
+export default function ExperienciaSection() {
+  const [experiencia, setExperiencia] = useState([]);
 
-//Creamos funcion asincrona para obtener los datos de experiencia y renderizarlos en la seccion de experiencia
+  useEffect(() => {
+    async function fetchExperiencia() {
+      try {
+        const res = await fetch("/api/experiencia");
+        if (!res.ok) return;
 
-export default async function ExperienciaSection() {
-  const experiencia = await getExperiencia();
+        const data = await res.json();
+        setExperiencia(data);
+      } catch (err) {
+        console.error("Error cargando experiencia:", err);
+      }
+    }
+
+    fetchExperiencia();
+  }, []); // ← evita bucles infinitos
 
   return (
     <section id="experiencia" className="home-section pb-5">
@@ -28,8 +34,6 @@ export default async function ExperienciaSection() {
         <div className="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-7">
           <div className="timeline">
 
-          {/* Renderiza un timeline por cada experiencia que venga de la API*/}
-          
             {experiencia.map((item, index) => (
               <div className="timelineItem" key={index}>
                 <div className="timelineDot" />

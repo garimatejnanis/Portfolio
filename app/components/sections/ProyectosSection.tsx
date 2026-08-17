@@ -1,23 +1,26 @@
 "use client";
 
-//Importamos el componente ProyectoSwiperPicker para mostrar los proyectos en un carrusel
-
+import { useEffect, useState } from "react";
 import ProyectoSwiperPicker from "../ProyectoSwiperPicker";
 
-// Obtiene los datos de proyectos desde la API y los devuelve como un objeto JSON
+export default function ProyectosSection() {
+  const [proyectos, setProyectos] = useState([]);
 
-async function getProyectos() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/proyectos`, {
-    headers: { "x-api-secret": process.env.API_SECRET! },
-    next: { revalidate: 3600 },
-  });
-  return res.json();
-}
+  useEffect(() => {
+    async function fetchProyectos() {
+      try {
+        const res = await fetch("/api/proyectos");
+        if (!res.ok) return;
 
-//Creamos funcion asincrona para obtener los datos de proyectos y renderizarlos en la seccion de proyectos
+        const data = await res.json();
+        setProyectos(data);
+      } catch (err) {
+        console.error("Error cargando proyectos:", err);
+      }
+    }
 
-export default async function ProyectosSection() {
-  const proyectos = await getProyectos();
+    fetchProyectos();
+  }, []); // ← evita bucles infinitos
 
   return (
     <section id="proyectos" className="home-section pb-5">
@@ -29,12 +32,8 @@ export default async function ProyectosSection() {
       </div>
 
       <div className="row justify-content-center g-3 px-3 pb-4">
-
-      {/* Renderiza una tarjeta por cada experiencia que venga de la API */}
-
         {proyectos.map((proyecto, index) => (
-          <div
-            className="col-12 col-sm-6 col-md-4 col-lg-4" key={index}>
+          <div className="col-12 col-sm-6 col-md-4 col-lg-4" key={index}>
             <div className="cajaCard h-100">
 
               <div className="mediaProyecto">
@@ -54,7 +53,6 @@ export default async function ProyectosSection() {
             </div>
           </div>
         ))}
-
       </div>
     </section>
   );

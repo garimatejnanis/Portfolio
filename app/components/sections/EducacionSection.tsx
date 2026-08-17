@@ -1,30 +1,35 @@
 "use client";
 
-//Importamos el componente Image de Next.js para optimizar las imágenes
-
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
-//Obtiene los datos de formacion desde la API y los devuelve como un objeto JSON
+export default function FormacionSection() {
+  const [data, setData] = useState(null);
 
-async function getFormacion() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/formacion`, {
-    headers: { "x-api-secret": process.env.API_SECRET! },
-    next: { revalidate: 3600 },
-  });
-  return res.json();
-}
+  useEffect(() => {
+    async function fetchFormacion() {
+      try {
+        const res = await fetch("/api/formacion");
+        if (!res.ok) return;
 
-//Creamos funcion asincrona para obtener los datos de formacion y renderizarlos en la seccion de formacion
+        const json = await res.json();
+        setData(json);
+      } catch (err) {
+        console.error("Error cargando formación:", err);
+      }
+    }
 
-export default async function FormacionSection() {
-  const data = await getFormacion();
+    fetchFormacion();
+  }, []); // ← evita bucles infinitos
+
+  if (!data) return null;
+
   const { educacion, certificados, idiomas } = data;
 
   return (
     <section id="formacion" className="home-section pb-5">
 
       {/* EDUCACIÓN */}
-
       <div className="row justify-content-center pt-2 pb-2">
         <div className="col-auto text-center">
           <h2>Formación</h2>
@@ -35,10 +40,7 @@ export default async function FormacionSection() {
       <div className="row justify-content-center" style={{ marginBottom: "2rem" }}>
         <div className="col-12 col-md-10 col-lg-8 col-xl-7">
           <div className="timeline">
-            
-            {/* Renderiza un timeline por cada educación que venga de la API*/}
-          
-            {educacion.map((edu: any, index: number) => (
+            {educacion.map((edu, index) => (
               <div className="timelineItem" key={index}>
                 <div className="timelineDot" />
                 <div className="timelineContent">
@@ -62,10 +64,7 @@ export default async function FormacionSection() {
       </div>
 
       <div className="row justify-content-center g-3 px-3 pb-4">
-
-        {/* Renderiza una tarjeta por cada certificado que venga de la API */}
-
-        {certificados.map((cert: any) => (
+        {certificados.map((cert) => (
           <div key={cert.title} className="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
             <a href={cert.href} target="_blank" rel="noopener noreferrer" className="cajaCardLink">
               <div className="cajaCard h-100">
@@ -88,10 +87,7 @@ export default async function FormacionSection() {
       <div className="row justify-content-center pb-5">
         <div className="col-12 col-md-10 col-lg-8 col-xl-7">
           <div className="idiomas-grid">
-
-            {/* Renderiza una tarjeta por cada idioma que venga de la API */}
-            
-            {idiomas.map((idioma: any, index: number) => (
+            {idiomas.map((idioma, index) => (
               <div className="idioma-card" key={index}>
                 <h4>{idioma.idioma}</h4>
                 <p>{idioma.nivel}</p>
