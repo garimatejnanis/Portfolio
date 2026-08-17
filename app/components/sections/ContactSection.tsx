@@ -5,7 +5,12 @@ import Image from "next/image";
 //Obtiene los datos de contacto desde la API y los devuelve como un objeto JSON
 
 async function getContacto() {
-  const res = await fetch(`/api/contacto`, {
+  const baseUrl =
+    process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
+  const res = await fetch(`${baseUrl}/api/contacto`, {
     headers: { "x-api-secret": process.env.API_SECRET! },
     next: { revalidate: 3600 },
   });
