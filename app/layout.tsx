@@ -11,7 +11,7 @@ import ClientScripts from "../src/components/ClientScripts";
 
 // SEO: metadata único para toda la web (página única con anclas)
 export const metadata: Metadata = {
-  metadataBase: new URL("https://TU-DOMINIO-FINAL.com"), // ⚠️ cambia al publicar
+  metadataBase: new URL("https://garimatejnanis.vercel.app/"), // ⚠️ cambia al publicar
 
   title: "Garima Tejnani – Desarrolladora Web",
 
