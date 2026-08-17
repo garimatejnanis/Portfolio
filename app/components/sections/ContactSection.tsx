@@ -1,3 +1,5 @@
+"use client";
+
 //Importamos el componente Image de Next.js para optimizar las imágenes
 
 import Image from "next/image"; 

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import InicioSection from './components/sections/InicioSection';
 import SobreMiSection from './components/sections/SobreMiSection';
 import EducacionSection from './components/sections/EducacionSection';
@@ -18,3 +20,4 @@ export default function Home() {
     </main>
   );
 }
+

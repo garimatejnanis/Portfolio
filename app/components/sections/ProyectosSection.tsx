@@ -1,3 +1,5 @@
+"use client";
+
 //Importamos el componente ProyectoSwiperPicker para mostrar los proyectos en un carrusel
 
 import ProyectoSwiperPicker from "../ProyectoSwiperPicker";

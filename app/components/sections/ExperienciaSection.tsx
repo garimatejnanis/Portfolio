@@ -1,3 +1,5 @@
+"use client";
+
 //Obtiene los datos de contacto desde la API y los devuelve como un objeto JSON
 
 async function getExperiencia() {
