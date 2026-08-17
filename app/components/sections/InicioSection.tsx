@@ -1,26 +1,17 @@
-"use client";
+// ❌ IMPORTANTE: NO pongas "use client"
+// Este componente ahora es SERVER COMPONENT
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 
-export default function InicioSection() {
-  const [data, setData] = useState({ titulo: "", descripcion: "" });
+export const dynamic = "force-dynamic"; // evita cache en producción
 
-  useEffect(() => {
-    async function fetchInicio() {
-      try {
-        const res = await fetch("/api/inicio");
-        if (!res.ok) return;
+export default async function InicioSection() {
+  // ⭐ Fetch en el servidor → sin CLS, sin flashes
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/inicio`, {
+    cache: "no-store",
+  });
 
-        const json = await res.json();
-        setData(json);
-      } catch (err) {
-        console.error("Error cargando inicio:", err);
-      }
-    }
-
-    fetchInicio();
-  }, []);
+  const data = await res.json();
 
   return (
     <section id="inicio" className="home-section pt-2 pb-5">
@@ -30,14 +21,13 @@ export default function InicioSection() {
           <p className="primerTexto">{data.descripcion}</p>
 
           <a
-  className="btn btn-primary me-3"
-  href="/CV-ES_Garima_Tejnani_Sukhnani.pdf"
-  target="_blank"
-  download
->
-  Descargar CV
-</a>
-
+            className="btn btn-primary me-3"
+            href="/CV-ES_Garima_Tejnani_Sukhnani.pdf"
+            target="_blank"
+            download
+          >
+            Descargar CV
+          </a>
 
           <Link className="btn btn-primary" href="#contacto">
             Contáctame

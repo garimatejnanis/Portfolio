@@ -1,33 +1,24 @@
-"use client";
+// ❌ IMPORTANTE: NO pongas "use client"
+// Este componente ahora es SERVER COMPONENT
 
-import { useEffect, useState } from "react";
 import ProyectoSwiperPicker from "../ProyectoSwiperPicker";
 
-export default function ProyectosSection() {
-  const [proyectos, setProyectos] = useState([]);
+export const dynamic = "force-dynamic"; // evita cache en producción
 
-  useEffect(() => {
-    async function fetchProyectos() {
-      try {
-        const res = await fetch("/api/proyectos");
-        if (!res.ok) return;
+export default async function ProyectosSection() {
+  // ⭐ Fetch en el servidor → sin CLS, sin flashes
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/proyectos`, {
+    cache: "no-store",
+  });
 
-        const data = await res.json();
-        setProyectos(data);
-      } catch (err) {
-        console.error("Error cargando proyectos:", err);
-      }
-    }
-
-    fetchProyectos();
-  }, []); // ← evita bucles infinitos
+  const proyectos = await res.json();
 
   return (
     <section id="proyectos" className="home-section pb-5">
       <div className="row justify-content-center pt-2 pb-2">
         <div className="col-auto text-center">
           <h2>Proyectos</h2>
-          <div className="decoracionLinea animada"></div>
+          <div className="decoracionLinea animada visible"></div>
         </div>
       </div>
 
@@ -37,6 +28,7 @@ export default function ProyectosSection() {
             <div className="cajaCard h-100">
 
               <div className="mediaProyecto">
+                {/* ⭐ Swiper sigue funcionando porque es un Client Component */}
                 <ProyectoSwiperPicker tipo={proyecto.tipo} />
               </div>
 

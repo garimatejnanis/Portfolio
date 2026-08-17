@@ -1,33 +1,24 @@
-"use client";
+// ❌ IMPORTANTE: NO pongas "use client"
+// Este componente ahora es SERVER COMPONENT
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 
-export default function ContactSection() {
-  const [contacto, setContacto] = useState([]);
+export const dynamic = "force-dynamic"; // evita cache en producción
 
-  useEffect(() => {
-    async function fetchContacto() {
-      try {
-        const res = await fetch("/api/contacto");
-        if (!res.ok) return;
+export default async function ContactSection() {
+  // ⭐ Fetch en el servidor → sin CLS, sin flashes
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/contacto`, {
+    cache: "no-store",
+  });
 
-        const data = await res.json();
-        setContacto(data);
-      } catch (err) {
-        console.error("Error cargando contacto:", err);
-      }
-    }
-
-    fetchContacto();
-  }, []); // ← evita bucles infinitos
+  const contacto = await res.json();
 
   return (
     <section id="contacto" className="home-section">
       <div className="row justify-content-center pb-4">
         <div className="col-auto text-center">
           <h2>Contacto</h2>
-          <div className="decoracionLinea animada"></div>
+          <div className="decoracionLinea animada visible"></div>
         </div>
       </div>
 

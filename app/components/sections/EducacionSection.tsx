@@ -1,41 +1,17 @@
-"use client";
+// ❌ IMPORTANTE: NO pongas "use client"
+// Este componente ahora es SERVER COMPONENT
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 
-export default function FormacionSection() {
-  const [data, setData] = useState(null);
+export const dynamic = "force-dynamic"; // evita cache en producción
 
-  useEffect(() => {
-    async function fetchFormacion() {
-      try {
-        const res = await fetch("/api/formacion");
-        if (!res.ok) return;
+export default async function FormacionSection() {
+  // ⭐ Fetch en el servidor → sin CLS, sin flashes
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/formacion`, {
+    cache: "no-store",
+  });
 
-        const json = await res.json();
-        setData(json);
-      } catch (err) {
-        console.error("Error cargando formación:", err);
-      }
-    }
-
-    fetchFormacion();
-  }, []);
-
-  // 👉 ESTE useEffect debe ejecutarse SOLO cuando data ya existe
-  useEffect(() => {
-    if (!data) return;
-
-    const timer = setTimeout(() => {
-      const lines = document.querySelectorAll(".decoracionLinea");
-      lines.forEach((line) => line.classList.add("visible"));
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [data]); // ← IMPORTANTE: depende de data
-
-  if (!data) return null;
-
+  const data = await res.json();
   const { educacion, certificados, idiomas } = data;
 
   return (
@@ -45,7 +21,7 @@ export default function FormacionSection() {
       <div className="row justify-content-center pt-2 pb-2">
         <div className="col-auto text-center">
           <h2>Formación</h2>
-          <div className="decoracionLinea animada"></div>
+          <div className="decoracionLinea animada visible"></div>
         </div>
       </div>
 
@@ -71,7 +47,7 @@ export default function FormacionSection() {
       <div className="row justify-content-center pt-2 pb-2">
         <div className="col-auto text-center">
           <h3>Certificados</h3>
-          <div className="decoracionLinea animada"></div>
+          <div className="decoracionLinea animada visible"></div>
         </div>
       </div>
 
@@ -92,7 +68,7 @@ export default function FormacionSection() {
       <div className="row justify-content-center pt-4 pb-3">
         <div className="col-auto text-center">
           <h3>Idiomas</h3>
-          <div className="decoracionLinea animada"></div>
+          <div className="decoracionLinea animada visible"></div>
         </div>
       </div>
 

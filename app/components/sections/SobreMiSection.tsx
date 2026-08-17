@@ -1,7 +1,9 @@
-"use client";
+// ❌ IMPORTANTE: NO pongas "use client"
+// Este componente ahora es SERVER COMPONENT
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
+
+export const dynamic = "force-dynamic"; // evita cache en producción
 
 function SkillGroup({ title, titleClassName, gridClassName, skills, cardClassName }) {
   return (
@@ -28,39 +30,13 @@ function SkillGroup({ title, titleClassName, gridClassName, skills, cardClassNam
   );
 }
 
-export default function SobreMiSection() {
-  const [data, setData] = useState(null);
+export default async function SobreMiSection() {
+  // ⭐ Fetch en el servidor → sin CLS, sin flashes
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/sobremi`, {
+    cache: "no-store",
+  });
 
-  useEffect(() => {
-    async function fetchSobreMi() {
-      try {
-        const res = await fetch("/api/sobremi");
-        if (!res.ok) return;
-
-        const json = await res.json();
-        setData(json);
-      } catch (err) {
-        console.error("Error cargando sobre mí:", err);
-      }
-    }
-
-    fetchSobreMi();
-  }, []);
-
-  // ⭐ Activar animación SOLO cuando los datos ya están renderizados
-  useEffect(() => {
-    if (!data) return;
-
-    const timer = setTimeout(() => {
-      const lines = document.querySelectorAll(".decoracionLinea");
-      lines.forEach((line) => line.classList.add("visible"));
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [data]); // ← IMPORTANTE
-
-  if (!data) return null;
-
+  const data = await res.json();
   const { sobreMi, skills } = data;
 
   return (
@@ -68,14 +44,14 @@ export default function SobreMiSection() {
       <div className="row justify-content-center">
         <div className="col-auto text-center">
           <h2>{sobreMi.titulo}</h2>
-          <div className="decoracionLinea animada"></div>
+          <div className="decoracionLinea animada visible"></div>
 
           <p>{sobreMi.parrafo1}</p>
           <br />
           <p>{sobreMi.parrafo2}</p>
 
           <h3 className="tituloSkills mt-5">Skills Técnicos</h3>
-          <div className="decoracionLinea animada"></div>
+          <div className="decoracionLinea animada visible"></div>
         </div>
       </div>
 
