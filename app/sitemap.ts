@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "localhost:3000"; 
+  const baseUrl = "https://garimatejnanis.vercel.app/"; 
 
   return [
     {
