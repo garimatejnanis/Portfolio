@@ -29,14 +29,15 @@ export default function InicioSection() {
           <h1>{data.titulo}</h1>
           <p className="primerTexto">{data.descripcion}</p>
 
-          <Link
-            className="btn btn-primary me-3"
-            href="/CV-ES_Garima_Tejnani_Sukhnani.pdf"
-            target="_blank"
-            download
-          >
-            Descargar CV
-          </Link>
+          <a
+  className="btn btn-primary me-3"
+  href="/CV-ES_Garima_Tejnani_Sukhnani.pdf"
+  target="_blank"
+  download
+>
+  Descargar CV
+</a>
+
 
           <Link className="btn btn-primary" href="#contacto">
             Contáctame
