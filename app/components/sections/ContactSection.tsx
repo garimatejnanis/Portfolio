@@ -5,17 +5,20 @@ import Image from "next/image";
 //Obtiene los datos de contacto desde la API y los devuelve como un objeto JSON
 
 async function getContacto() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/contacto`, {
+  const res = await fetch(`/api/contacto`, {
     headers: { "x-api-secret": process.env.API_SECRET! },
     next: { revalidate: 3600 },
   });
+
   if (!res.ok) {
-  console.error("Error en API de contacto:", await res.text());
-  return [];
+    console.error("API contacto error:", await res.text());
+    return [];
+  }
+
+  return res.json();
 }
 
-return res.json();
-}
+
 
 //Creamos funcion asincrona para obtener los datos de contacto y renderizarlos en la seccion de contacto
 
