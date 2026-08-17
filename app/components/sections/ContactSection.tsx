@@ -25,6 +25,7 @@ async function getContacto() {
 
 
 
+
 //Creamos funcion asincrona para obtener los datos de contacto y renderizarlos en la seccion de contacto
 
 export default async function ContactSection() {
