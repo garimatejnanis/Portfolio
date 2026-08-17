@@ -9,7 +9,9 @@ async function getSobreMi() {
     headers: { "x-api-secret": process.env.API_SECRET! },
     next: { revalidate: 3600 },
   });
-  return res.json();
+  const text = await res.text();
+  console.log("DEBUG SOBRE MI:", res.status, text.slice(0, 200));
+  return JSON.parse(text);
 }
 
 //Creamos un componente SkillGroup para renderizar cada grupo de skills

@@ -9,7 +9,9 @@ async function getContacto() {
     headers: { "x-api-secret": process.env.API_SECRET! },
     next: { revalidate: 3600 },
   });
-  return res.json();
+  const text = await res.text();
+  console.log("DEBUG CONTACTO:", res.status, text.slice(0, 200));
+  return JSON.parse(text);
 }
 
 //Creamos funcion asincrona para obtener los datos de contacto y renderizarlos en la seccion de contacto
