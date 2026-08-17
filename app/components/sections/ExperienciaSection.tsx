@@ -1,25 +1,15 @@
-"use client";
+// ❌ IMPORTANTE: NO pongas "use client" aquí
+// Este componente ahora es SERVER COMPONENT
 
-import { useEffect, useState } from "react";
+export const dynamic = "force-dynamic"; // evita cache en producción
 
-export default function ExperienciaSection() {
-  const [experiencia, setExperiencia] = useState([]);
+export default async function ExperienciaSection() {
+  // ⭐ Fetch en el servidor → sin CLS, sin flashes
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/experiencia`, {
+    cache: "no-store",
+  });
 
-  useEffect(() => {
-    async function fetchExperiencia() {
-      try {
-        const res = await fetch("/api/experiencia");
-        if (!res.ok) return;
-
-        const data = await res.json();
-        setExperiencia(data);
-      } catch (err) {
-        console.error("Error cargando experiencia:", err);
-      }
-    }
-
-    fetchExperiencia();
-  }, []); // ← evita bucles infinitos
+  const experiencia = await res.json();
 
   return (
     <section id="experiencia" className="home-section pb-5">
