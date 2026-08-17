@@ -86,10 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
 
         {/* ⭐ Google Search Console */}
-        <meta
-          name="google-site-verification"
-          content="p2p0Rrl2tbZc3cDGd1gJo6d5anWn-GxQcIxDjPFMK-E"
-        />
+        <meta name="google-site-verification" content="bCsW_FyHhV5pPuPVYz90L5pKU_J5nho4hdFwstchThM" />
       </head>
 
 
