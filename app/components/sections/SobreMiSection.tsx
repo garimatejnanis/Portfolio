@@ -14,13 +14,13 @@ function SkillGroup({ title, titleClassName, gridClassName, skills, cardClassNam
           {skills.map((skill) => (
             <span key={skill.name}>
               <Image
-                src={skill.icon}
-                alt={skill.name}
-                width={18}
-                height={18}
-                style={{ marginRight: "6px" }}
-                loading="lazy"
-              />
+  src={skill.icon}
+  alt={skill.name}
+  width={18}
+  height={18}
+  style={{ marginRight: "6px", width: "18px", height: "18px", objectFit: "contain" }}
+  loading="lazy"
+/>
               {skill.name}
             </span>
           ))}
