@@ -20,7 +20,7 @@ export default function InicioSection() {
     }
 
     fetchInicio();
-  }, []); // ← IMPORTANTE: evita bucles infinitos
+  }, []);
 
   return (
     <section id="inicio" className="home-section pt-2 pb-5">
