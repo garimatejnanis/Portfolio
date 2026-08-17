@@ -47,6 +47,18 @@ export default function SobreMiSection() {
     fetchSobreMi();
   }, []);
 
+  // ⭐ Activar animación SOLO cuando los datos ya están renderizados
+  useEffect(() => {
+    if (!data) return;
+
+    const timer = setTimeout(() => {
+      const lines = document.querySelectorAll(".decoracionLinea");
+      lines.forEach((line) => line.classList.add("visible"));
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [data]); // ← IMPORTANTE
+
   if (!data) return null;
 
   const { sobreMi, skills } = data;
@@ -57,9 +69,11 @@ export default function SobreMiSection() {
         <div className="col-auto text-center">
           <h2>{sobreMi.titulo}</h2>
           <div className="decoracionLinea animada"></div>
+
           <p>{sobreMi.parrafo1}</p>
           <br />
           <p>{sobreMi.parrafo2}</p>
+
           <h3 className="tituloSkills mt-5">Skills Técnicos</h3>
           <div className="decoracionLinea animada"></div>
         </div>
