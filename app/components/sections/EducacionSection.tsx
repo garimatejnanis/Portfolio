@@ -22,6 +22,11 @@ export default function FormacionSection() {
     fetchFormacion();
   }, []); // ← evita bucles infinitos
 
+  useEffect(() => {
+    const lines = document.querySelectorAll(".decoracionLinea");
+    lines.forEach((line) => line.classList.add("visible"));
+  }, []);
+
   if (!data) return null;
 
   const { educacion, certificados, idiomas } = data;

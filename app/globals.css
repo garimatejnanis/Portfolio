@@ -994,10 +994,10 @@ p {
   transition: transform 0.6s ease;
 }
 
-/* Cuando aparece en pantalla */
 .decoracionLinea.visible {
   transform: scaleX(1);
 }
+
 
 
 #cursor-blur {
