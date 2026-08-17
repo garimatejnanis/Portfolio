@@ -3,7 +3,6 @@
 
 import Image from "next/image";
 
-export const dynamic = "force-dynamic"; // evita cache en producción
 
 function SkillGroup({ title, titleClassName, gridClassName, skills, cardClassName }) {
   return (
@@ -33,7 +32,7 @@ function SkillGroup({ title, titleClassName, gridClassName, skills, cardClassNam
 export default async function SobreMiSection() {
   // ⭐ Fetch en el servidor → sin CLS, sin flashes
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/sobremi`, {
-    cache: "no-store",
+    cache: "force-cache",
   });
 
   const data = await res.json();

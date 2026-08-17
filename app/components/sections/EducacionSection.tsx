@@ -3,12 +3,10 @@
 
 import Image from "next/image";
 
-export const dynamic = "force-dynamic"; // evita cache en producción
-
 export default async function FormacionSection() {
   // ⭐ Fetch en el servidor → sin CLS, sin flashes
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/formacion`, {
-    cache: "no-store",
+    cache: "force-cache",
   });
 
   const data = await res.json();

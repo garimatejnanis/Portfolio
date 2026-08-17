@@ -3,12 +3,10 @@
 
 import ProyectoSwiperPicker from "../ProyectoSwiperPicker";
 
-export const dynamic = "force-dynamic"; // evita cache en producción
-
 export default async function ProyectosSection() {
   // ⭐ Fetch en el servidor → sin CLS, sin flashes
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/proyectos`, {
-    cache: "no-store",
+    cache: "force-cache",
   });
 
   const proyectos = await res.json();

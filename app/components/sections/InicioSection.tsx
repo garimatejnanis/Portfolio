@@ -3,12 +3,10 @@
 
 import Link from "next/link";
 
-export const dynamic = "force-dynamic"; // evita cache en producción
-
 export default async function InicioSection() {
   // ⭐ Fetch en el servidor → sin CLS, sin flashes
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/inicio`, {
-    cache: "no-store",
+    cache: "force-cache",
   });
 
   const data = await res.json();
