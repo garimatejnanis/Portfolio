@@ -6,11 +6,11 @@ export default function ClientScripts() {
   useEffect(() => {
     // Ocultar barra de Google Translate
     function removeGoogleBar() {
-      const frame = document.querySelector('.goog-te-banner-frame');
+      const frame = document.querySelector('iframe.skiptranslate');
       if (frame) frame.remove();
 
-      const banner = document.querySelector('.goog-te-banner');
-      if (banner) banner.remove();
+      const container = document.querySelector('div.skiptranslate');
+      if (container) container.remove();
 
       document.body.style.top = '0px';
     }
