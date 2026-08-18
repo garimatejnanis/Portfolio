@@ -4,8 +4,10 @@ import { useEffect } from "react";
 
 export default function ClientScripts() {
   useEffect(() => {
+
     // Ocultar (sin eliminar) la barra de Google Translate
     // así el widget sigue activo y la traducción sigue funcionando
+    
     function hideGoogleBar() {
       const frame = document.querySelector('iframe.skiptranslate') as HTMLElement | null;
       if (frame) frame.style.display = 'none';

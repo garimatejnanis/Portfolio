@@ -9,7 +9,7 @@ export default function Cabecera() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hovering, setHovering] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null); // ⬅️ nuevo ref para el menú desplegable
+  const menuRef = useRef<HTMLDivElement>(null); 
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
