@@ -860,6 +860,10 @@ section#inicio {
     width: 100%;
     z-index: 1000;
   }
+
+  section#inicio {
+    padding-top: 30px !important;
+  }
   
   .cabecera-menu {
     display: none !important;
