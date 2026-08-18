@@ -16,7 +16,7 @@ export default async function FormacionSection() {
     <section id="formacion" className="home-section pb-5">
 
       {/* EDUCACIÓN */}
-      <div className="row justify-content-center pt-2 pb-2">
+      <div className="row justify-content-center pt-2 pb-2 px-3">
         <div className="col-auto text-center">
           <h2>Formación</h2>
           <div className="decoracionLinea animada"></div>

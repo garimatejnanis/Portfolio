@@ -16,7 +16,7 @@ export default async function ExperienciaSection() {
         </div>
       </div>
 
-      <div className="row justify-content-center">
+      <div className="row justify-content-center px-3">
         <div className="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-7">
           <div className="timeline">
 

@@ -39,7 +39,7 @@ export default async function SobreMiSection() {
 
   return (
     <section id="sobre-mi" className="home-section pt-2 pb-5">
-      <div className="row justify-content-center">
+      <div className="row justify-content-center px-3">
         <div className="col-auto text-center">
           <h2>{sobreMi.titulo}</h2>
           <div className="decoracionLinea animada"></div>
