@@ -4,20 +4,21 @@ import { useEffect } from "react";
 
 export default function ClientScripts() {
   useEffect(() => {
-    // Ocultar barra de Google Translate
-    function removeGoogleBar() {
-      const frame = document.querySelector('iframe.skiptranslate');
-      if (frame) frame.remove();
+    // Ocultar (sin eliminar) la barra de Google Translate
+    // así el widget sigue activo y la traducción sigue funcionando
+    function hideGoogleBar() {
+      const frame = document.querySelector('iframe.skiptranslate') as HTMLElement | null;
+      if (frame) frame.style.display = 'none';
 
-      const container = document.querySelector('div.skiptranslate');
-      if (container) container.remove();
+      const container = document.querySelector('div.skiptranslate') as HTMLElement | null;
+      if (container) container.style.display = 'none';
 
       document.body.style.top = '0px';
     }
 
-    removeGoogleBar();
+    hideGoogleBar();
 
-    const observer = new MutationObserver(removeGoogleBar);
+    const observer = new MutationObserver(hideGoogleBar);
     observer.observe(document.body, { childList: true, subtree: true });
 
     // Animación decoracionLinea
