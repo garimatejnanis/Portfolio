@@ -235,6 +235,12 @@ p {
 .cabecera {
   background: #000;
   padding: 12px 0;
+  position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  
 }
 
 .cabecera-nav {

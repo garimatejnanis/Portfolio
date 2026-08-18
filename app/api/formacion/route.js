@@ -14,7 +14,8 @@ export async function GET() {
 
     certificados: [
       {
-        href: "https://skillshop.exceedlms.com/student/award/8yZtPqekLf16ZEva4MdnbX8g",
+        href: "https://skillshop.exceedlms.com/student/award/8yZtPqekLf16ZEva4MdnbX8g"
+       ,
         image: "/googleactivate-logo.svg",
         alt: "Google Activate Logo",
         title: "Introducción al Desarrollo Web: HTML y CSS I"
