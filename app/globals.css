@@ -938,9 +938,7 @@ section#inicio {
     padding: 12px;
   }
 
-  section#inicio {
-    padding-top: 30px !important;
-  }
+  
 
   .skillsWrapper {
     gap: 1rem;
