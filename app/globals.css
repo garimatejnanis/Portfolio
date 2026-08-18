@@ -236,14 +236,11 @@ p {
   background: #000;
   padding: 12px 0;
   position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-  
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
-
-
 
 .cabecera-nav {
   height: 80px;
@@ -855,9 +852,13 @@ section#inicio {
   /*cabecera*/
 
   .cabecera {
-    position: sticky;
+    background: #000;
+    padding: 12px 0;
+    position: fixed;
     top: 0;
-    z-index: 9999;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
   }
   
   .cabecera-menu {
@@ -935,7 +936,7 @@ section#inicio {
 
   section#inicio {
     padding-top: 30px !important;
-}
+  }
 
   .skillsWrapper {
     gap: 1rem;

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     url: "/",
     title: "Garima Tejnani – Desarrolladora Web",
     description:
-      "Portafolio profesional de Garima Tejnani, desarrolladora web especializada en PHP, MySQL, WordPress y JavaScript.",
+      "Desarrolladora web con experiencia en proyectos reales. Portfolio con enfoque en calidad de código, rendimiento y experiencia de usuario.",
     siteName: "Garima Tejnani",
 
     //Para que la imagen se vea bien en redes sociales.
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Garima Tejnani – Desarrolladora Web",
-      }, 
+      },
     ],
   },
 };
