@@ -7,7 +7,7 @@ import ProyectoSwiperPicker from "../ProyectoSwiperPicker";
 export default async function ProyectosSection() {
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/proyectos`, {
-    cache: "force-cache",
+    cache: "no-store",
   });
 
   const proyectos = await res.json();

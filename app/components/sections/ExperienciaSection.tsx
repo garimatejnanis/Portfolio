@@ -2,7 +2,7 @@
 
 export default async function ExperienciaSection() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/experiencia`, {
-    cache: "force-cache",
+    cache: "no-store",
   });
 
   const experiencia = await res.json();

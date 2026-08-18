@@ -7,7 +7,7 @@ import Link from "next/link";
 export default async function InicioSection() {
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/inicio`, {
-    cache: "force-cache",
+    cache: "no-store",
   });
 
   const data = await res.json();

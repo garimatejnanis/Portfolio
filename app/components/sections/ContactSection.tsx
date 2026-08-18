@@ -7,7 +7,7 @@ import Image from "next/image";
 export default async function ContactSection() {
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/contacto`, {
-    cache: "force-cache",
+    cache: "no-store",
   });
 
   const contacto = await res.json();

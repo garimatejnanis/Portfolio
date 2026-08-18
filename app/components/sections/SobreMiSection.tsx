@@ -31,7 +31,7 @@ function SkillGroup({ title, titleClassName, gridClassName, skills, cardClassNam
 export default async function SobreMiSection() {
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/sobremi`, {
-    cache: "force-cache",
+    cache: "no-store",
   });
 
   const data = await res.json();

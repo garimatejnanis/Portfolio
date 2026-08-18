@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default async function FormacionSection() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/formacion`, {
-    cache: "force-cache",
+    cache: "no-store",
   });
 
   const data = await res.json();
