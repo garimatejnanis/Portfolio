@@ -377,7 +377,6 @@ p {
 .cuerpo {
   width: 100%;
   max-width: 1200px;
-  /*margin: 110px auto 0 auto;*/
   background-color: transparent;
   color: var(--text-light);
   min-height: calc(100vh - 140px);
@@ -387,6 +386,10 @@ p {
 
 .home-section {
   width: 100%;
+}
+
+section#inicio {
+    padding-top: 120px !important;
 }
 
 /* Skills */
