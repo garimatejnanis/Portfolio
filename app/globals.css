@@ -246,7 +246,7 @@ p {
 }
 
 .cabecera-menu a:hover {
-  color: #fff;
+  color: #fff !important;
 }
 
 .menu-toggle {
@@ -970,7 +970,14 @@ p {
 
 .VIpgJd-ZVi9od-ORHb-OEVmcd{
   display: none !important;
+  border: none;
+  box-shadow: none;
 }
+
+.VIpgJd-ZVi9od-ORHb{
+  display: none;
+}
+
 
 .decoracionLinea {
   width: 80px;
