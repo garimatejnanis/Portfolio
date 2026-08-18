@@ -243,6 +243,8 @@ p {
   
 }
 
+
+
 .cabecera-nav {
   height: 80px;
   padding-right: 8px;
@@ -385,6 +387,7 @@ p {
 
 .home-section {
   width: 100%;
+  padding-top: 60px !important;
 }
 
 /* Skills */
