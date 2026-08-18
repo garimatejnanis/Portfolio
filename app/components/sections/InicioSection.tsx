@@ -14,7 +14,7 @@ export default async function InicioSection() {
 
   return (
     <section id="inicio" className="home-section pt-2 pb-5">
-      <div className="row justify-content-center">
+      <div className="row justify-content-center px-3">
         <div className="col-12 col-md-10 col-lg-8 text-center">
           <h1>{data.titulo}</h1>
           <p className="primerTexto">{data.descripcion}</p>
