@@ -70,7 +70,7 @@ export default async function FormacionSection() {
         </div>
       </div>
 
-      <div className="row justify-content-center pb-5">
+      <div className="row justify-content-center pb-5 px-3">
         <div className="col-12 col-md-10 col-lg-8 col-xl-7">
           <div className="idiomas-grid">
             {idiomas.map((idioma, index) => (
