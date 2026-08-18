@@ -1,4 +1,7 @@
+//API de Proyectos
+
 export async function GET() {
+
   const data = [
     {
       titulo: "Proyecto Final (CFGS)",

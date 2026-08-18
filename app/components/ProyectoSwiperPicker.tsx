@@ -3,7 +3,8 @@
 import { useEffect, useState, useRef } from "react";
 import dynamic from "next/dynamic";
 
-// Lazy load de cada swiper
+//Lazy load de cada swiper
+
 const ProjectsSwiper = dynamic(() => import("./ProjectsSwiper"), { ssr: false });
 const ProjectsSwiper2 = dynamic(() => import("./ProjectSwiper2"), { ssr: false });
 const ProjectsSwiper3 = dynamic(() => import("./ProjectSwiper3"), { ssr: false });
@@ -13,7 +14,9 @@ export default function ProyectoSwiperPicker({ tipo }) {
   const ref = useRef(null);
 
   useEffect(() => {
-    // Solo carga Swiper cuando el usuario llega a la sección
+
+//Solo carga Swiper cuando el usuario llega a la sección
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {

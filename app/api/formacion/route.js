@@ -1,4 +1,7 @@
+//API de Formacion
+
 export async function GET() {
+
   const data = {
     educacion: [
       {
@@ -29,31 +32,31 @@ export async function GET() {
         title: "JavaScript Intermedio"
       },
       {
-        href: "https://www.sololearn.com/certificates/CC-9J7RKILW",
+        href: "https://www.sololearn.com/certificates/CT-Q10FH29A",
         image: "/sololearn_logo.svg",
         alt: "Sololearn Logo",
         title: "Desarrollo de videojuegos con JS"
       },
       {
-        href: "https://www.simplilearn.com",
+        href: "https://simpli-web.app.link/e/Uy1UGUtZH5b",
         image: "/simplilearn-logo.png",
         alt: "Simplilearn Logo",
         title: "Curso Shopify"
       },
       {
-        href: "https://bigschool.ai",
+        href: "https://drive.google.com/file/d/1LrfJROSUnOwI72Y2gPaqXlWh9a-Z3o5T/view?usp=sharing",
         image: "/bigschool-logo.svg",
         alt: "BIG School Logo",
         title: "Curso de Iniciación a los flujos de trabajo con Inteligencia Artificial"
       },
       {
-        href: "https://www.sololearn.com",
+        href: "https://www.sololearn.com/certificates/CC-4GG37NIL",
         image: "/sololearn_logo.svg",
         alt: "Sololearn Logo",
         title: "SEO con IA"
       },
       {
-        href: "https://www.sololearn.com",
+        href: "https://www.sololearn.com/certificates/CC-VJN9DXF9",
         image: "/sololearn_logo.svg",
         alt: "Sololearn Logo",
         title: "Ingeniería de prompts"

@@ -1,10 +1,10 @@
-// ❌ IMPORTANTE: NO pongas "use client"
-// Este componente ahora es SERVER COMPONENT
+//Importamos el componente Image de Next.js para optimizar la carga de imágenes
 
 import Image from "next/image";
 
+//Componente principal de la sección "Formación" que se renderiza en el servidor y obtiene los datos de la API
+
 export default async function FormacionSection() {
-  // ⭐ Fetch en el servidor → sin CLS, sin flashes
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/formacion`, {
     cache: "force-cache",
   });
@@ -19,7 +19,7 @@ export default async function FormacionSection() {
       <div className="row justify-content-center pt-2 pb-2">
         <div className="col-auto text-center">
           <h2>Formación</h2>
-          <div className="decoracionLinea animada visible"></div>
+          <div className="decoracionLinea animada"></div>
         </div>
       </div>
 
@@ -45,7 +45,7 @@ export default async function FormacionSection() {
       <div className="row justify-content-center pt-2 pb-2">
         <div className="col-auto text-center">
           <h3>Certificados</h3>
-          <div className="decoracionLinea animada visible"></div>
+          <div className="decoracionLinea animada"></div>
         </div>
       </div>
 
@@ -66,7 +66,7 @@ export default async function FormacionSection() {
       <div className="row justify-content-center pt-4 pb-3">
         <div className="col-auto text-center">
           <h3>Idiomas</h3>
-          <div className="decoracionLinea animada visible"></div>
+          <div className="decoracionLinea animada"></div>
         </div>
       </div>
 

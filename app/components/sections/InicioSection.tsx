@@ -1,10 +1,11 @@
-// ❌ IMPORTANTE: NO pongas "use client"
-// Este componente ahora es SERVER COMPONENT
+//Importamos el componente Link de Next.js para optimizar la navegación entre páginas
 
 import Link from "next/link";
 
+//Componente principal de la sección "Inicio" que se renderiza en el servidor y obtiene los datos de la API
+
 export default async function InicioSection() {
-  // ⭐ Fetch en el servidor → sin CLS, sin flashes
+
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/inicio`, {
     cache: "force-cache",
   });
@@ -18,18 +19,12 @@ export default async function InicioSection() {
           <h1>{data.titulo}</h1>
           <p className="primerTexto">{data.descripcion}</p>
 
-          <a
-            className="btn btn-primary me-3"
-            href="/CV-ES_Garima_Tejnani_Sukhnani.pdf"
-            target="_blank"
-            download
-          >
+          <a className="btn btn-primary me-3" href="/CV-ES_Garima_Tejnani_Sukhnani.pdf" target="_blank" download >
             Descargar CV
           </a>
 
-          <Link className="btn btn-primary" href="#contacto">
-            Contáctame
-          </Link>
+          <Link className="btn btn-primary" href="#contacto"> Contáctame</Link>
+
         </div>
       </div>
     </section>

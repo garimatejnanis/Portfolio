@@ -1,13 +1,16 @@
+//API de Sobre Mi
+
 export async function GET() {
+
   const data = {
     sobreMi: {
       titulo: "Sobre mí",
       parrafo1:
-        "Soy desarrolladora web enfocada en crear aplicaciones modernas, rápidas y centradas en la experiencia del usuario. Me gusta trabajar de forma organizada, cuidando cada detalle del diseño y la funcionalidad para asegurar que cada proyecto sea claro, escalable y fácil de mantener.",
+        "Soy desarrolladora web y disfruto transformar ideas en soluciones digitales claras, eficientes y bien estructuradas. Trabajo de forma organizada, cuidando cada detalle del diseño, la arquitectura y la funcionalidad para que cada proyecto sea fácil de mantener, escalable y agradable de usar. Me interesa especialmente la experiencia de usuario, la calidad del código y la optimización del rendimiento como parte esencial del desarrollo.",
       parrafo2:
-        "Combino desarrollo Front‑End y Back‑End para construir soluciones completas: webs corporativas, tiendas online, paneles de administración y sistemas personalizados que ayudan a empresas y profesionales a mejorar su presencia digital y optimizar sus procesos."
+        "He participado en proyectos reales para empresas y clientes, colaborando en todas las fases: planificación, desarrollo, mejora y evolución técnica. He creado webs corporativas, tiendas online y paneles de administración orientados a la gestión de contenido, productos y usuarios, adaptados a las necesidades de cada negocio. También utilizo herramientas de IA para detectar mejoras, optimizar procesos y asegurar que cada solución funcione de forma sólida y profesional.",
     },
-
+    
     skills: {
       frontEnd: [
         { name: "HTML5", icon: "/html-logo.svg", alt: "HTML5" },

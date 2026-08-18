@@ -34,13 +34,15 @@ export const metadata: Metadata = {
     description:
       "Portafolio profesional de Garima Tejnani, desarrolladora web especializada en PHP, MySQL, WordPress y JavaScript.",
     siteName: "Garima Tejnani",
+
+    //Para que la imagen se vea bien en redes sociales.
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Garima Tejnani – Desarrolladora Web",
-      },
+      }, 
     ],
   },
 };
@@ -58,7 +60,7 @@ const jsonLd = {
   jobTitle: "Desarrolladora Web",
   description:
     "Desarrolladora web especializada en PHP, MySQL, WordPress y JavaScript.",
-  url: "https://TU-DOMINIO-FINAL.com",
+  url: "https://garimatejnanis.vercel.app/",
   sameAs: [
     "https://es.linkedin.com/in/garima-ts-6b8252248",
     "https://github.com/garimatejnanis/",

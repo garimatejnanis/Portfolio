@@ -1,8 +1,6 @@
-// ❌ IMPORTANTE: NO pongas "use client" aquí
-// Este componente ahora es SERVER COMPONENT
+//Componente principal de la sección "Experiencia" que se renderiza en el servidor y obtiene los datos de la API
 
 export default async function ExperienciaSection() {
-  // ⭐ Fetch en el servidor → sin CLS, sin flashes
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/experiencia`, {
     cache: "force-cache",
   });
