@@ -967,7 +967,7 @@ p {
   font-size: 14px;
 }
 
-
+/*
 .VIpgJd-ZVi9od-ORHb-OEVmcd{
   display: none !important;
   border: none !important;
@@ -975,6 +975,10 @@ p {
 }
 
 .VIpgJd-ZVi9od-ORHb{
+  display: none !important;
+}
+*/
+.skiptranslate {
   display: none !important;
 }
 
