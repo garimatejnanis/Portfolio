@@ -9,7 +9,6 @@ export async function GET() {
       descripcionPrincipal:
         "Desarrollo y mantenimiento de aplicaciones y funcionalidades web dentro del departamento digital, colaborando en la mejora continua de la plataforma, la optimización del rendimiento y la experiencia de usuario.",
       tareasPrincipal: [
-        "Desarrollo y mantenimiento de funcionalidades web con Laravel, PHP, HTML, CSS y JavaScript.",
         "Desarrollo de un proyecto interno con Laravel, participando en el análisis, implementación y evolución de nuevas funcionalidades.",
         "Gestión y mantenimiento de la tienda online en Shopify: mejoras funcionales, actualización de contenidos y optimización de la experiencia de usuario.",
         "Maquetación e integración de componentes visuales adaptados a las necesidades del negocio.",
